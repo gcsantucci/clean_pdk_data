@@ -12,8 +12,6 @@ pdk_file = 'Knu_600k_{}_pandas.p'
 pdk_file = os.path.join(path, pdk_pickle, pdk_file)
 pdk_out = os.path.join(path, pdk_pickle, 'Knu_600k_{}_filtered.p')
 
-#atm
-
 int_cols = ['tfcfv', 'fcfv', 'nring', 'nse', 'mg']
 drop_cols = ['enll', 'munll', 'pinll', 'pmgnll']
 cuts = ['fcfv==1', 'nring==1', 'enll_munll>0', 'nse==2']
@@ -42,7 +40,7 @@ def pipeline(df, dfname):
 
 for i in xrange(start, nfiles):
     pdk = pickle.load(open(pdk_file.format(i), 'rb'))
-    pdk = pipeline(pdk, 'pdk')
+    pdk = pipeline(pdk, 'df')
     pdk.to_pickle(pdk_out.format(i))
     print('Saved file {}:\n{}\n'.format(i, pdk_out.format(i)))
 
